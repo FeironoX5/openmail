@@ -1,0 +1,45 @@
+<div id="navbar">
+  <button matTooltip="Написать письмо" matTooltipPosition="right" id="write" class="link"><img
+    src="assets/icons/navbar/write.svg"></button>
+  <button matTooltip="Все папки" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/menu.svg">
+  </button>
+  <button matTooltip="Входящие" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/mail.svg">
+  </button>
+  <button matTooltip="Отправленные" matTooltipPosition="right" class="link"><img
+    src="assets/icons/navbar/paper-plane.svg"></button>
+  <button matTooltip="Спам" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/block.svg"></button>
+  <button matTooltip="Корзина" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/folder-close.svg">
+  </button>
+  <button matTooltip="Настройки" matTooltipPosition="right" style="position: absolute; bottom: 20px;" class="link"><img
+    src="assets/icons/navbar/settings.svg"></button>
+</div>
+<div id="content">
+  <div id="mail-list">
+    <div class="mail" *ngFor="let mail of mails; let i = index" [ngClass]="{active: checked[i]}">
+      <div class="avatar-section">
+        <div class="avatar" (click)="checked[i] = !checked[i]">
+          <span>О</span>
+          <img src="assets/icons/marked.svg">
+        </div>
+      </div>
+      <div class="content-section">
+        <div class="top-content">
+          <div class="unread-mark"></div>
+          <span>Код подтверждения - Epic Games</span>
+        </div>
+        <span class="middle-content">Epic Games</span>
+        <span class="bottom-content">Здравствуйте, введите код подтверждения: 124124</span>
+      </div>
+      <div class="action-section">
+        <span>13 фев</span>
+        <button matTooltip="Скопировать код из письма" class="mail-but" id="mail-but-{{i}}" (click)="copyCode(i)">
+          <img src="assets/icons/copy.svg" class="copy">
+          <img src="assets/icons/marked.svg" class="done">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mail-view">
+    <h1>Участие во втором туре отборочных соревнований | Приглашение</h1>
+  </div>
+</div>
