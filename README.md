@@ -4,6 +4,9 @@ OpenMail - is an opensource web-based mail client in process of development
 
 Follow project on VC.ru: https://vc.ru/u/1094715-openmail-blog-komandy
 
+Project preview: https://openmail.vercel.app/mail
+
+___
 ## How to run?
 
 1. Run `npm install`
