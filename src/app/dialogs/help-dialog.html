@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<h2 mat-dialog-title>Режим "Пульс"</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Build features quickly with simple, declarative templates. Extend the template language with
+    your own components and use a wide array of existing components. Get immediate Angular-specific
+    help and feedback with nearly every IDE and editor. All this comes together so you can focus
+    on building amazing apps rather than trying to make the code work.</p>
+  <div style="background: #161616;border-radius: 7px;padding-bottom: 15px;padding-top: 4px;">
+    <mat-list role="list">
+      <div mat-subheader>Сочетания клавиш</div>
+      <mat-list-item role="listitem" style="width: 100%;">
+        <div>Стрелка вправо</div>
+        <div style="width: 150px; margin-left: auto">
+          <mat-select [(ngModel)]="right">
+            <mat-option [value]="0">Прочитано</mat-option>
+            <mat-option [value]="1">Архивировать</mat-option>
+            <mat-option [value]="2">Удалить</mat-option>
+            <mat-option [value]="3">Важное</mat-option>
+          </mat-select>
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem" style="width: 100%;">
+        <div>Стрелка влево</div>
+        <div style="width: 150px; margin-left: auto">
+          <mat-select [(ngModel)]="left">
+            <mat-option [value]="0">Прочитано</mat-option>
+            <mat-option [value]="1">Архивировать</mat-option>
+            <mat-option [value]="2">Удалить</mat-option>
+            <mat-option [value]="3">Важное</mat-option>
+          </mat-select>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [disabled]="this.right == this.left" mat-dialog-close (click)="saveData()">
+    Сохранить
+  </button>
+</mat-dialog-actions>

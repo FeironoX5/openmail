@@ -20,12 +20,12 @@ $open-mail-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$open-mail-theme: mat.define-light-theme((
+$open-mail-theme: mat.define-dark-theme((
   color: (
     primary: $open-mail-primary,
     accent: $open-mail-accent,
     warn: $open-mail-warn,
-  )
+  ),
 ));
 
 // Include theme styles for core and each component used in your app.

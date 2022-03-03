@@ -1,1 +1,504 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #FFFFFF;
+  vertical-align: top;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #080808;
+  overflow: hidden;
+}
+
+#header {
+  height: 60px;
+  background: #161616;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 0;
+  user-select: none;
+  z-index: 1;
+}
+
+#logo-section {
+  width: 70px;
+  text-align: center;
+  display: inline-block;
+  height: 100%;
+}
+
+#logo-section img {
+  width: 31px;
+  height: 31px;
+  margin-top: calc((60px - 31px) / 2);
+}
+
+#title-section {
+  width: 180px;
+  display: inline-block;
+  height: 100%;
+}
+
+#title-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  line-height: 60px;
+  margin-left: 8px;
+}
+
+#actions-section {
+  width: calc(100% - 70px - 180px - 200px - 63px);
+  display: inline-block;
+  height: 100%;
+}
+
+
+.action {
+  display: inline-block;
+  margin: calc((60px - 21px - 13px * 2) / 2) 0;
+  height: 21px;
+  padding: 13px 15px 13px 14px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.action.active {
+  background: #FF4916;
+}
+
+.action:not(#filter):hover {
+  background: #080808;
+}
+
+.action.active:hover {
+  background: #e04d23 !important;
+}
+
+.action * {
+  display: inline-block;
+}
+
+.action:not(#filter) img {
+  width: 21px;
+  height: 21px;
+  margin-right: 9px;
+}
+
+.action span {
+  font-size: 15px;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+#filter {
+  float: right;
+  padding: 13px 0;
+  margin-right: 35px;
+}
+
+#filter img {
+  height: 6px;
+  margin-top: calc((21px - 6px) / 2 + 1px);
+  margin-left: 13px;
+}
+
+#search-section {
+  width: 200px;
+  display: inline-block;
+  height: 100%;
+  position: relative;
+}
+
+#search-section input {
+  width: calc(200px - 15px - 45px - 14px);
+  margin: calc((60px - 21px - 13px * 2) / 2) 15px calc((60px - 21px - 13px * 2) / 2) 0;
+  height: 21px;
+  padding: 13px 45px 13px 14px;
+  border-radius: 5px;
+  background: #0B0B0B;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+#search-section input::placeholder {
+  font-weight: 600;
+}
+
+#search-section img {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: calc((60px - 18px) / 2);
+  right: 35px;
+}
+
+#account-section {
+  width: 63px;
+  text-align: center;
+  display: inline-block;
+  height: 100%;
+}
+
+#account-section img {
+  width: 43px;
+  height: 43px;
+  margin-top: calc((60px - 43px) / 2);
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  position: relative;
+}
+
+#account-section:hover img {
+  transform: scale(1.02);
+}
+
+.mat-menu-panel {
+  background: #252525;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.mat-snack-bar-container {
+  background: #252525;
+}
+
+.mat-menu-item {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.mat-menu-item.active {
+  background: rgba(255, 255, 255, 0.04)
+}
+
+.mat-dialog-container {
+  background: #252525;
+  min-width: 70vw;
+}
+
+.mat-button-disabled {
+  opacity: 0.7;
+}
+
+#navbar {
+  width: 70px;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 0;
+  text-align: center;
+  background: #080808;
+  z-index: 1;
+}
+
+.link {
+  cursor: pointer;
+  display: block;
+  margin: 0 12px;
+  width: calc(70px - 12px * 2);
+  height: calc(70px - 12px * 2);
+  border-radius: 7px;
+  transition: background 0.2s ease;
+}
+
+.link:hover {
+  background: #333333;
+}
+
+.link img {
+  width: 21px;
+}
+
+#write {
+  background: #FFFFFF;
+  margin-top: 11px;
+  margin-bottom: 10px;
+}
+
+#write img {
+  width: 19px;
+}
+
+#content {
+  position: relative;
+  margin-left: 70px;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+  font-size: 0;
+}
+
+#mail-list {
+  margin-left: 3px;
+  padding: 11px 4px 11px 0;
+  width: calc(40% - 3px - 4px);
+  height: calc(100vh - 60px - 11px * 2);
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+#mail-list::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+
+#mail-list::-webkit-scrollbar-track {
+  margin: 11px 0;
+}
+
+#mail-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+#mail-list::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 10px;
+}
+
+.mail {
+  background: #19191A;
+  display: block;
+  height: 80px;
+  border-radius: 13px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3px;
+  cursor: pointer;
+  transition: padding 0.2s ease;
+  user-select: none;
+}
+
+.mail.active {
+  padding-top: 4px;
+  padding-bottom: 6px;
+}
+
+.mail * {
+  display: inline-block;
+}
+
+.avatar-section {
+  width: calc(31px + 3vw);
+  height: 100%;
+  display: inline-block;
+}
+
+.avatar {
+  --size: calc(31px + 3vw - 9px * 2);
+  width: var(--size);
+  height: var(--size);
+  line-height: var(--size);
+  margin: 10px 9px 0;
+  border-radius: 50%;
+  text-align: center;
+  background: #FFB980;
+  transition: background 0.1s, transform 0.1s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.04);
+}
+
+.mail.active .avatar {
+  background: #2979F1;
+}
+
+.mail.active .avatar span {
+  display: none;
+}
+
+.mail.active .avatar:hover {
+  transform: scale(0.98);
+}
+
+.mail.active .avatar img {
+  display: block;
+}
+
+.avatar span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #C25B21;
+}
+
+.avatar img {
+  width: 17px;
+  height: 14px;
+  margin-left: calc((100% - 17px) / 2);
+  margin-top: calc((100% - 14px) / 2 + 1px);
+  display: none;
+}
+
+.content-section {
+  width: calc(100% - (31px + 3vw));
+  height: 100%;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.top-content, .middle-content, .bottom-content {
+  display: block;
+  width: 100%;
+}
+
+.top-content {
+  height: 19px;
+  margin-top: 12px;
+}
+
+.unread-mark {
+  width: 7px;
+  height: 7px;
+  margin-top: calc((19px - 7px) / 2);
+  background: #2979F1;
+  border-radius: 50%;
+}
+
+.top-content span {
+  margin-left: 6px;
+  line-height: 19px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.middle-content {
+  height: 18px;
+  margin-top: 2px;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.bottom-content {
+  height: 18px;
+  margin-top: 1px;
+  line-height: 18px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.2);
+}
+.bottom-content * {
+  color: rgba(255, 255, 255, 0.2);
+}
+.action-section {
+  padding-right: 18px;
+  padding-left: 20px;
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background: linear-gradient(270deg, #19191A 80%, rgba(25, 25, 26, 0) 100%);
+  transition: background 0.2s ease;
+}
+
+.action-section * {
+  float: right;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.action-section span {
+  width: 100%;
+  line-height: 40px;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mail-but {
+  width: 46px;
+  height: 30px;
+  background: #e04d23;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.1s ease;
+}
+
+.mail-but:hover {
+  transform: scale(1.02);
+  background: #FF4916;
+}
+
+.mail-but.copied {
+  transform: scale(1.03);
+  background: #FF4916;
+}
+
+.mail-but.copied .copy {
+  display: none;
+}
+
+.mail-but .done {
+  display: none;
+}
+
+.mail-but.copied .done {
+  display: block;
+}
+
+.mail-but .copy {
+  width: 18px;
+  margin: calc((30px - 18px) / 2) calc((46px - 18px) / 2);
+}
+
+.mail-but .done {
+  width: 14px;
+  margin: calc((30px - 14px) / 2) calc((46px - 14px) / 2);
+}
+
+#mail-view {
+  width: calc(60% - 80px - 25px);
+  height: 100%;
+  display: inline-block;
+  padding-right: 80px;
+  padding-left: 25px;
+}
+
+#mail-view h1 {
+  font-size: 25px;
+  width: 100%;
+  line-height: 120%;
+  margin-top: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#mail-view div {
+  font-size: 15px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

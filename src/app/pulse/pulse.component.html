@@ -1,1 +1,16 @@
-<p>pulse works!</p>
+<div id="f{{i}}" *ngFor="let mail of mailService.mails; let i = index" class="pulse-card"
+     [ngStyle]="i < mailService.mails.length - 2 && {'transform': 'translateY(calc(100vh))'} || i == mailService.mails.length - 2 && {'transform': 'translateY(calc(100vh - 80px - 45px + 20px))'} || {}">
+  <h1 style="font-size: 30px; margin-left: 20px; margin-top: 20px;">{{mailService.mails[i].theme}}</h1>
+</div>
+<button id="left-button" (click)="moveLeft()" style="left: calc(30px + 70px);">
+  <img src="assets/icons/pulse/read.svg" *ngIf="pulseService.left == 0">
+  <img src="assets/icons/pulse/archive.svg" *ngIf="pulseService.left == 1">
+  <img src="assets/icons/pulse/delete.svg" *ngIf="pulseService.left == 2">
+  <img src="assets/icons/pulse/star.svg" *ngIf="pulseService.left == 3">
+</button>
+<button id="right-button" (click)="moveRight()" style="right: calc(30px);">
+  <img src="assets/icons/pulse/read.svg" *ngIf="pulseService.right == 0">
+  <img src="assets/icons/pulse/archive.svg" *ngIf="pulseService.right == 1">
+  <img src="assets/icons/pulse/delete.svg" *ngIf="pulseService.right == 2">
+  <img src="assets/icons/pulse/star.svg" *ngIf="pulseService.right == 3">
+</button>

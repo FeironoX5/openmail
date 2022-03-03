@@ -1,37 +1,25 @@
-<div id="navbar">
-  <button matTooltip="Написать письмо" matTooltipPosition="right" id="write" class="link"><img
-    src="assets/icons/navbar/write.svg"></button>
-  <button matTooltip="Все папки" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/menu.svg">
-  </button>
-  <button matTooltip="Входящие" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/mail.svg">
-  </button>
-  <button matTooltip="Отправленные" matTooltipPosition="right" class="link"><img
-    src="assets/icons/navbar/paper-plane.svg"></button>
-  <button matTooltip="Спам" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/block.svg"></button>
-  <button matTooltip="Корзина" matTooltipPosition="right" class="link"><img src="assets/icons/navbar/folder-close.svg">
-  </button>
-  <button matTooltip="Настройки" matTooltipPosition="right" style="position: absolute; bottom: 20px;" class="link"><img
-    src="assets/icons/navbar/settings.svg"></button>
-</div>
 <div id="content">
   <div id="mail-list">
-    <div class="mail" *ngFor="let mail of mails; let i = index" [ngClass]="{active: checked[i]}">
+    <div
+      [ngStyle]="mailActive == i && {'background': '#252526'} || {}"
+      class="mail" *ngFor="let mail of mailService.mails | mailFilter; let i = index"
+      [ngClass]="{active: mailService.checked[i]}">
       <div class="avatar-section">
-        <div class="avatar" (click)="checked[i] = !checked[i]">
+        <div class="avatar" (click)="mailService.checked[i] = !mailService.checked[i]">
           <span>О</span>
           <img src="assets/icons/marked.svg">
         </div>
       </div>
-      <div class="content-section">
+      <div class="content-section" (click)="mailActive = i">
         <div class="top-content">
-          <div class="unread-mark"></div>
-          <span>Код подтверждения - Epic Games</span>
+          <div *ngIf="!mail.read" class="unread-mark"></div>
+          <span>{{mail.theme}}</span>
         </div>
-        <span class="middle-content">Epic Games</span>
-        <span class="bottom-content">Здравствуйте, введите код подтверждения: 124124</span>
+        <span class="middle-content">{{mail.from.name}}</span>
+        <span class="bottom-content" [innerHTML]="mail.content.slice(0, 50)"></span>
       </div>
-      <div class="action-section">
-        <span>13 фев</span>
+      <div class="action-section" [ngStyle]="mailActive == i && {'background': 'linear-gradient(270deg, #252526 80%, rgba(25, 25, 26, 0) 100%)'} || {}">
+        <span>{{mail.dateTime.split(',')[0]}}</span>
         <button matTooltip="Скопировать код из письма" class="mail-but" id="mail-but-{{i}}" (click)="copyCode(i)">
           <img src="assets/icons/copy.svg" class="copy">
           <img src="assets/icons/marked.svg" class="done">
@@ -40,6 +28,12 @@
     </div>
   </div>
   <div id="mail-view">
-    <h1>Участие во втором туре отборочных соревнований | Приглашение</h1>
+    <div *ngIf="mailActive >= 0">
+      <h1>{{mailService.mails[mailActive].theme}}</h1>
+      <div style="margin-top: 8px;" [innerHTML]="mailService.mails[mailActive].content"></div>
+    </div>
+    <div *ngIf="mailActive < 0">
+      <p style="text-align: center; margin-top: 50px">Не выбрано</p>
+    </div>
   </div>
 </div>

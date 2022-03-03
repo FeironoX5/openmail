@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ClipboardService} from "ngx-clipboard";
+import {MailService} from "../mail.service";
 
 @Component({
   selector: 'app-mail-list',
@@ -7,23 +8,9 @@ import {ClipboardService} from "ngx-clipboard";
   styleUrls: ['./mail-list.component.css']
 })
 export class MailListComponent {
-  mails = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-  checked = new Array<boolean>(this.mails.length);
-  filterValue = 0;
+  mailActive = -1;
 
-  constructor(private clipboard: ClipboardService) {
-  }
-
-  selectAll() {
-    for (let i = 0; i < this.mails.length; i++) {
-      this.checked[i] = true;
-    }
-  }
-
-  deselectAll() {
-    for (let i = 0; i < this.mails.length; i++) {
-      this.checked[i] = false;
-    }
+  constructor(private clipboard: ClipboardService, public mailService: MailService) {
   }
 
   copyCode(i: number) {
@@ -31,7 +18,6 @@ export class MailListComponent {
     const but = document.getElementById('mail-but-' + i.toString())!;
     but.classList.add('copied');
     setTimeout(() => but.classList.remove('copied'), 1000);
-
   }
 
 

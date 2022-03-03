@@ -1,0 +1,33 @@
+.pulse-card {
+  font-size: 100px;
+  transition: 0.4s ease;
+  border-radius: 20px;
+  top: 80px;
+  bottom: 45px;
+  position: absolute;
+  left: calc(130px + 70px);
+  right: 130px;
+  background: #161616;
+}
+
+button {
+  border-radius: 50%;
+  background: #161616;
+  width: 70px;
+  height: 70px;
+  top: calc((100vh - 70px) / 2);
+  position: fixed;
+  z-index: 1;
+  transition: transform 0.1s, background 0.1s ease;
+  cursor: pointer;
+}
+
+button img {
+  width: 36px;
+  margin: 17px;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background: #252525;
+}
