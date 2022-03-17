@@ -46,7 +46,7 @@
   </div>
   <div id="search-section">
     <img src="assets/icons/search.svg">
-    <input placeholder="Поиск">
+    <input [(ngModel)]="mailService.searchValue" placeholder="Поиск">
   </div>
   <div id="account-section">
     <img [matMenuTriggerFor]="headerMenu"

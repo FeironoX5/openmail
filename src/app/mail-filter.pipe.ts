@@ -10,13 +10,14 @@ export class MailFilterPipe implements PipeTransform {
   }
 
   transform(value: Array<Mail>) {
-    console.log(this.mailService.filterValue);
+    const searchValue = this.mailService.searchValue.toLowerCase();
+    const searched = value.filter(value => value.from.name.toLowerCase().includes(searchValue) || value.title.toLowerCase().includes(searchValue));
     if (this.mailService.filterValue == 0) {
-      return value;
+      return searched;
     } else if (this.mailService.filterValue == 1) {
-      return value.filter(item => !item.read);
+      return searched.filter(item => item.flags.includes('\\\\Seen'));
     } else {
-      return value;
+      return searched;
     }
   }
 

@@ -12,14 +12,14 @@
       </div>
       <div class="content-section" (click)="mailActive = i">
         <div class="top-content">
-          <div *ngIf="!mail.read" class="unread-mark"></div>
-          <span>{{mail.theme}}</span>
+          <div *ngIf="!mail.flags.includes('\\\\Seen')" class="unread-mark"></div>
+          <span>{{mail.title}}</span>
         </div>
         <span class="middle-content">{{mail.from.name}}</span>
-        <span class="bottom-content" [innerHTML]="mail.content.slice(0, 50)"></span>
+        <span class="bottom-content" [innerHTML]="mail.bodystructure.toString()"></span>
       </div>
       <div class="action-section" [ngStyle]="mailActive == i && {'background': 'linear-gradient(270deg, #252526 80%, rgba(25, 25, 26, 0) 100%)'} || {}">
-        <span>{{mail.dateTime.split(',')[0]}}</span>
+        <span>{{mail.date.split(',')[0]}}</span>
         <button matTooltip="Скопировать код из письма" class="mail-but" id="mail-but-{{i}}" (click)="copyCode(i)">
           <img src="assets/icons/copy.svg" class="copy">
           <img src="assets/icons/marked.svg" class="done">
@@ -29,8 +29,8 @@
   </div>
   <div id="mail-view">
     <div *ngIf="mailActive >= 0">
-      <h1>{{mailService.mails[mailActive].theme}}</h1>
-      <div style="margin-top: 8px;" [innerHTML]="mailService.mails[mailActive].content"></div>
+      <h1>{{mailService.mails[mailActive].title}}</h1>
+      <div style="margin-top: 8px;" [innerHTML]="mailService.mails[mailActive].bodystructure.toString()"></div>
     </div>
     <div *ngIf="mailActive < 0">
       <p style="text-align: center; margin-top: 50px">Не выбрано</p>

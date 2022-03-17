@@ -1,20 +1,33 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "./auth.service";
 
 
 export class User {
   constructor(public name: string,
-              public email: string) {
+              public address: string) {
   }
 }
 
 export class Mail {
-  constructor(public from: User,
-              public to: Array<User>,
-              public content: string,
-              public theme: string,
-              public dateTime: string,
-              public folder: string,
-              public read: boolean
+  constructor(
+    public UID: number,
+    public UIDValidity: string,
+    public bodystructure: any,
+    public date: string,
+    public flags: Array<string>,
+    public folders: Array<string>,
+    public from: User,
+    public internalDate: string,
+    public labels: Array<string>,
+    public messageId: string,
+    public modSeq: number,
+    public path: string,
+    public references: any,
+    public title: string,
+    public to: Array<User>,
+    public type: string,
+    public xGMThreadId: string,
   ) {
   }
 }
@@ -25,21 +38,27 @@ export class Mail {
 })
 export class MailService {
   mails: Array<Mail> = [];
-  checked = new Array<boolean>(this.mails.length);
+  checked = new Array<boolean>(0);
   filterValue = 0;
+  searchValue = '';
 
-  constructor() {
-    for (let i = 0; i < 40; i++) {
-      this.mails.push(
-        new Mail(new User('Sender ' + i.toString(),
-            'mail' + i.toString() + '@gmail.com'),
-          [],
-          i % 2 == 0 && 'Hello, World! <b>Why I got this email?</b>' || '',
-          'Hello, Receiver ' + i.toString(),
-          '1:01,Tuesday',
-          'входящие',
-          i > 5));
-    }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.loadMails("INBOX");
+  }
+
+  loadMails(url: string) {
+    this.http.post('/api/mailsByFolderURL', {
+      email: this.authService.email,
+      password: this.authService.password,
+      url: url,
+    }).toPromise()
+      .then((response: any) => {
+        if (response) {
+          console.log(response.inbox);
+          this.mails = response.inbox;
+        }
+      })
+      .catch(error => console.error(error));
   }
 
   selectAll() {

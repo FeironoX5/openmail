@@ -1,6 +1,6 @@
 <div id="f{{i}}" *ngFor="let mail of mailService.mails; let i = index" class="pulse-card"
      [ngStyle]="i < mailService.mails.length - 2 && {'transform': 'translateY(calc(100vh))'} || i == mailService.mails.length - 2 && {'transform': 'translateY(calc(100vh - 80px - 45px + 20px))'} || {}">
-  <h1 style="font-size: 30px; margin-left: 20px; margin-top: 20px;">{{mailService.mails[i].theme}}</h1>
+  <h1 style="font-size: 30px; margin-left: 20px; margin-top: 20px;">{{mailService.mails[i].title}}</h1>
 </div>
 <button id="left-button" (click)="moveLeft()" style="left: calc(30px + 70px);">
   <img src="assets/icons/pulse/read.svg" *ngIf="pulseService.left == 0">
